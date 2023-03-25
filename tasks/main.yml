@@ -1,0 +1,12 @@
+---
+# cilium_sysctl_override_rp_filter/tasks/main.yml
+
+- name: 'Create /etc/sysctl.d/99-override_cilium_rp_filter.conf'
+  ansible.builtin.template:
+    src: '99-override_cilium_rp_filter.conf.j2'
+    dest: '/etc/sysctl.d/99-override_cilium_rp_filter.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'Restart systemd-sysctl'

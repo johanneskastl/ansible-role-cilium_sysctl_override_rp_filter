@@ -1,0 +1,7 @@
+---
+# cilium_sysctl_override_rp_filter/handlers/main.yml
+
+- name: 'Restart systemd-sysctl'
+  ansible.builtin.service:
+    name: systemd-sysctl
+    state: restarted
